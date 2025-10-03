@@ -1,0 +1,47 @@
+# Core scientific computing and data processing
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+
+# Machine Learning
+scikit-learn>=1.0.0
+
+# Advanced ML models (optional but recommended)
+xgboost>=1.5.0
+lightgbm>=3.3.0
+catboost>=1.0.0
+
+# Neural Networks (optional)
+torch>=1.11.0
+torchvision>=0.12.0  # Only needed if using torchvision
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Utilities
+pathlib2>=2.3.0  # For Python < 3.4 compatibility
+typing-extensions>=4.0.0  # Enhanced typing support
+
+# Optional: Experiment tracking
+mlflow>=1.20.0  # Only if using MLflow tracking
+
+# Development and testing (optional)
+jupyter>=1.0.0
+ipykernel>=6.0.0
+pytest>=6.0.0
+
+# Code quality (optional)
+black>=21.0.0
+flake8>=4.0.0
+mypy>=0.910
+
+# Performance monitoring (optional)
+psutil>=5.8.0
+memory-profiler>=0.60.0
+
+# Data validation (optional)
+pandera>=0.9.0
+
+# Logging (optional, built-in logging is used by default)
+loguru>=0.6.0

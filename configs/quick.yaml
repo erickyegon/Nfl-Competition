@@ -1,0 +1,79 @@
+# Quick Test Configuration for NFL Pipeline
+# Fast configuration for testing and development
+
+experiment:
+  name: "nfl_quick_test"
+  description: "Quick test run with minimal models and data"
+  random_state: 42
+
+data:
+  data_dir: "./data"
+  raw_dir: "./data/raw"              # Raw CSV files
+  processed_dir: "./data/processed"  # Cleaned data
+  features_dir: "./data/features"    # Engineered features
+  use_cached_processed: true         # Use cached processed data if available
+  use_cached_features: true          # Use cached features if available
+  use_sample_data: true
+  sample_size: 10000  # Use only 10k samples
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+
+features:
+  generate_physics_features: true
+  generate_spatial_features: true
+  generate_temporal_features: false  # Skip for speed
+  generate_interaction_features: false  # Skip for speed
+  max_features: 50  # Limit features
+  feature_selection_method: "variance"
+
+models:
+  models_to_evaluate:
+    - ridge
+    - random_forest
+  tune_hyperparameters: false  # Skip tuning for speed
+  tuning_method: "random"
+  n_iter: 5
+  cv_folds_tuning: 2
+  enable_ensembles: false  # Skip ensembles for speed
+  ensemble_methods: []
+
+training:
+  n_splits: 2  # Minimal CV
+  n_jobs: -1
+  verbose: 1
+
+neural_networks:
+  nn_hidden_layers: [32, 16]  # Smaller network
+  nn_dropout: 0.2
+  nn_learning_rate: 0.01
+  nn_epochs: 10  # Few epochs
+  nn_batch_size: 64
+  use_early_stopping: false
+  patience: 5
+
+sequence_models:
+  lstm_hidden_size: 32
+  lstm_num_layers: 1
+  lstm_dropout: 0.1
+  sequence_length: 5
+
+output:
+  output_dir: "./outputs"
+  models_dir: "./models"
+  logs_dir: "./logs"
+  save_models: true
+  save_predictions: false  # Skip for speed
+  save_evaluation_plots: false  # Skip for speed
+  save_feature_importance: false  # Skip for speed
+
+logging:
+  log_level: "INFO"
+  log_to_file: true
+  log_to_console: true
+  save_logs: false
+
+performance:
+  use_gpu: false
+  memory_limit_gb: 8  # Limit memory
+  optimize_memory: true

@@ -1,0 +1,84 @@
+# Default Configuration for NFL Player Movement Prediction Pipeline
+# This configuration provides balanced settings for production use
+
+experiment:
+  name: "nfl_default_run"
+  description: "Default configuration for NFL player movement prediction"
+  random_state: 42
+
+data:
+  data_dir: "./data"
+  raw_dir: "./data/raw"              # Raw CSV files
+  processed_dir: "./data/processed"  # Cleaned data
+  features_dir: "./data/features"    # Engineered features
+  use_cached_processed: true         # Use cached processed data if available
+  use_cached_features: true          # Use cached features if available
+  use_sample_data: false
+  sample_size: null  # Use all data
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+
+features:
+  generate_physics_features: true
+  generate_spatial_features: true
+  generate_temporal_features: true
+  generate_interaction_features: true
+  max_features: null  # Use all features
+  feature_selection_method: "mutual_info"
+
+models:
+  models_to_evaluate:
+    - ridge
+    - random_forest
+    - xgboost
+    - lightgbm
+  tune_hyperparameters: true
+  tuning_method: "random"
+  n_iter: 20
+  cv_folds_tuning: 3
+  enable_ensembles: true
+  ensemble_methods:
+    - averaging
+    - weighted_averaging
+    - stacking
+
+training:
+  n_splits: 5  # For cross-validation
+  n_jobs: -1  # Use all CPU cores
+  verbose: 1
+
+neural_networks:
+  nn_hidden_layers: [128, 64, 32]
+  nn_dropout: 0.3
+  nn_learning_rate: 0.001
+  nn_epochs: 50
+  nn_batch_size: 32
+  use_early_stopping: true
+  patience: 10
+
+sequence_models:
+  lstm_hidden_size: 64
+  lstm_num_layers: 2
+  lstm_dropout: 0.2
+  sequence_length: 10
+
+output:
+  output_dir: "./outputs"
+  models_dir: "./models"
+  logs_dir: "./logs"
+  save_models: true
+  save_predictions: true
+  save_evaluation_plots: true
+  save_feature_importance: true
+
+logging:
+  log_level: "INFO"
+  log_to_file: true
+  log_to_console: true
+  save_logs: true
+
+performance:
+  use_gpu: false  # Set to true if GPU available
+  memory_limit_gb: null  # No limit
+  optimize_memory: true

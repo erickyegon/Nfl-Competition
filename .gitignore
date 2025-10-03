@@ -1,0 +1,253 @@
+# ============================================================================
+# SENSITIVE DATA - NEVER COMMIT
+# ============================================================================
+
+# API Keys and Credentials
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+secrets.json
+api_keys.txt
+
+# AWS Credentials
+.aws/
+*.pem
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================================================
+# DATA FILES - TOO LARGE FOR GIT
+# ============================================================================
+
+# Raw Data
+data/raw/train/
+data/raw/test/
+data/raw/*.csv
+data/raw/*.parquet
+data/raw/*.json
+
+# Processed Data
+data/processed/
+data/features/
+
+# External Data
+data/external/
+
+# All data files
+*.csv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+
+# ============================================================================
+# MODEL FILES - TOO LARGE FOR GIT
+# ============================================================================
+
+# Outputs
+outputs/
+logs/
+models/
+
+# Model Files
+*.joblib
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.h5
+*.onnx
+*.pb
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual Environments
+nfl/
+venv/
+ENV/
+env/
+.venv/
+venv.bak/
+
+# ============================================================================
+# JUPYTER NOTEBOOKS
+# ============================================================================
+
+# Checkpoint files
+.ipynb_checkpoints/
+
+# Notebook output files (keep clean notebooks in repo)
+notebooks/archive/
+notebooks/*_output.ipynb
+
+# Keep only the main notebooks (allow all .ipynb files)
+# (We want to commit the notebooks as they're educational)
+
+# ============================================================================
+# IDE / EDITORS
+# ============================================================================
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+\#*\#
+.\#*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================================================
+# TESTING
+# ============================================================================
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+coverage.xml
+*.cover
+.cache
+nosetests.xml
+test-results/
+
+# ============================================================================
+# DOCUMENTATION BUILD
+# ============================================================================
+
+docs/_build/
+docs/_static/
+docs/_templates/
+site/
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+.cache/
+.claude/
+tmp/
+temp/
+
+# ============================================================================
+# OLD FILES (from before restructuring)
+# ============================================================================
+
+nfl_ml_pipeline.py
+add_tuning_section.py
+README_OPTIMIZATIONS.txt
+
+# Old duplicate files (already in nfl_pipeline/)
+main.py
+config.py
+data_loader.py
+data_preparation.py
+feature_engineering.py
+models.py
+sequence_models.py
+ensemble.py
+evaluation.py
+prediction.py
+utils.py
+
+# Old documentation
+RESTRUCTURE_COMPLETE.md
+CLEANUP_GUIDE.md
+NEXT_STEPS.md
+
+# ============================================================================
+# PROJECT-SPECIFIC
+# ============================================================================
+
+# Experiment tracking (if using MLflow)
+mlruns/
+mlartifacts/
+
+# Tensorboard logs
+runs/
+tensorboard/
+
+# Profiling
+*.prof
+*.lprof
+
+# Large files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z

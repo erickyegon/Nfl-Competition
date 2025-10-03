@@ -1,0 +1,117 @@
+# LSTM Configuration for NFL Pipeline
+# Specialized configuration for sequence models
+
+experiment:
+  name: "nfl_lstm_run"
+  description: "LSTM and sequence model focused configuration"
+  random_state: 42
+
+data:
+  data_dir: "./data"
+  raw_dir: "./data/raw"              # Raw CSV files
+  processed_dir: "./data/processed"  # Cleaned data
+  features_dir: "./data/features"    # Engineered features
+  use_cached_processed: true         # Use cached processed data if available
+  use_cached_features: true          # Use cached features if available
+  use_sample_data: false
+  sample_size: null
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  # Sequence-specific settings
+  create_sequences: true
+  sequence_length: 15
+  sequence_stride: 1
+
+features:
+  generate_physics_features: true
+  generate_spatial_features: true
+  generate_temporal_features: true  # Important for sequences
+  generate_interaction_features: true
+  max_features: null
+  feature_selection_method: "mutual_info"
+  # Sequence feature settings
+  include_velocity_history: true
+  include_acceleration_history: true
+  include_position_history: true
+
+models:
+  models_to_evaluate:
+    - lstm
+    - gru
+    - bidirectional_lstm
+  tune_hyperparameters: true
+  tuning_method: "random"
+  n_iter: 15
+  cv_folds_tuning: 3
+  enable_ensembles: false  # Focus on individual sequence models
+  ensemble_methods: []
+
+training:
+  n_splits: 3
+  n_jobs: -1
+  verbose: 2
+
+neural_networks:
+  nn_hidden_layers: [256, 128, 64]
+  nn_dropout: 0.3
+  nn_learning_rate: 0.0005
+  nn_epochs: 100
+  nn_batch_size: 32
+  use_early_stopping: true
+  patience: 15
+
+sequence_models:
+  # LSTM settings
+  lstm_hidden_size: 128
+  lstm_num_layers: 3
+  lstm_dropout: 0.3
+  lstm_bidirectional: false
+
+  # GRU settings
+  gru_hidden_size: 128
+  gru_num_layers: 3
+  gru_dropout: 0.3
+
+  # Training settings
+  sequence_length: 15
+  sequence_batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  grad_clip: 1.0
+
+  # Architecture options
+  use_attention: false
+  use_residual: true
+  use_batch_norm: true
+
+output:
+  output_dir: "./outputs"
+  models_dir: "./models"
+  logs_dir: "./logs"
+  save_models: true
+  save_predictions: true
+  save_evaluation_plots: true
+  save_feature_importance: false  # Not applicable for LSTMs
+  # Sequence-specific outputs
+  save_attention_weights: false
+  save_sequence_visualizations: true
+  save_trajectory_plots: true
+
+logging:
+  log_level: "INFO"
+  log_to_file: true
+  log_to_console: true
+  save_logs: true
+  # Detailed logging for training
+  log_every_n_epochs: 5
+  log_grad_norms: false
+
+performance:
+  use_gpu: true  # Recommended for LSTM training
+  memory_limit_gb: null
+  optimize_memory: true
+  # GPU settings
+  gpu_device: 0
+  mixed_precision: false
+  dataloader_workers: 4
